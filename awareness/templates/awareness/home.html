@@ -1,0 +1,58 @@
+{% include 'awareness/header.html' %}
+
+<body style="background-color: #ecf0f1;">
+    {%  for message in messages %}
+    <h1> {{message}} </h1>
+    {% endfor %}
+    <div class="container">
+        <hr>
+        <h1>Ask Your question by putting up a question in the platform</h1>
+        <form method="POST" action='createpost/'>
+            {% csrf_token %}
+            <label for="">Enter title</label> <br>
+            <input type="text" name="title" id="" placeholder='Enter Question title' class="search-box"> <br> <br>
+            <label for="">Enter Description</label> <br>
+            <input type="text" name="description" id="" placeholder="Enter Question  Description" class="search-box">
+            <br> <br>
+            <input type="submit" value="Submit" class="btnn1">
+            <hr>
+        </form>
+    </div>
+    <div class="container">
+        <form action='searchbypostname/' method="GET">
+            <label> Enter post name</label>
+            <br>
+            <input type="text" name='postname' placeholder='Searchbypostname' class="search-box">
+            <button class="btnn2"><i class="fa fa-search"></i></button>
+        </form>
+    </div>
+
+    <div class="container">
+        <div class="post">
+            {% for post in posts %}
+            <hr>
+            <h2> Title of the post is:- <i><u>{{post.title}}</u></i></h2>
+            <h2> Description of the post is <i><u>{{post.description}}</u></i></h2>
+            <h2> Posted by:- <i><u>{{post.user.user.username}}</u></i></h2>
+            <button class="search-box2"><a href="answer/{{post.id}}/">Answer this post</a></button>
+            <button class="search-box3"><a href="viewreply/{{post.id}}/"> View Replies <a></button>
+            {% endfor %}
+        </div>
+    </div>
+
+
+
+    <hr>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>

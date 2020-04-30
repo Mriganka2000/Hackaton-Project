@@ -1,0 +1,13 @@
+{% load static %}
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+<link rel="stylesheet" href="{% static 'css/home.css' %}">
+<div class="container">
+    <form method="POST">
+        {% csrf_token %}
+        <label for="">Enter Answer</label>
+        <br>
+        <input class="search-box" type="text" name="answer" id="" placeholder="Enter Answer"> <br> <br>
+        <input class="btnn1" type="submit" id value="Submit">
+    </form>
+</div>
